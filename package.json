@@ -1,0 +1,16 @@
+{
+  "name": "renderdemo",
+  "version": "1.0.0",
+  "description": "renderdemo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js"  
+  },
+  "keywords": [
+    "render",
+    "node.js"
+  ],
+  "author": "Leena",
+  "license": "ISC"
+}
