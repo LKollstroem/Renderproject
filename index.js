@@ -9,15 +9,6 @@ http
         response.end(""); //End response
     })
     .listen(PORT); // The server object listens on port
-    // remember first npm init, then npm i express axios, then make changes to package-lock.json:
-    // "name": "ws3",
-    // "version": "1.0.0",
-    //"descriptions": "This is azure project that is changed to render",
-    // "main": "index.js",
-    //"scripts": {
-    //"test": "echo \"Error: no test specified\" && exit 1",
-    // "start": "node index.js"
-    // },
-
-    // then add read_file_axios.js part
-    //and then cd correct folder and node index.js and look at browser http://localhost:3000/
+    
+    //remember changes to the other file.package.json
+//look at browser http://localhost:3000/
