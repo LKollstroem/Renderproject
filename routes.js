@@ -13,7 +13,7 @@ app.get('/', function (req, res){
 app.get('/guestbook', function (req, res){
     var data = require('./guestbook.json');
     //pare data to make it look good
-    var results = '<table border="1"> ';
+    var results = '<H1>This is the guestbook log</H1><style>table, td {background-color: powderblue; border: 1px solid black;}</style><table border="1">';
     for(var i =0; i<data.length; i++){
         results +=
         '<tr>'+
@@ -23,7 +23,6 @@ app.get('/guestbook', function (req, res){
         '<td>' +data[i].date+'</td>'+
         '<td>' +data[i].message+'</td>'+
         '</tr>';
-        //maybe id/username /country etc should start with Capital letter or small
     }
     res.send(results);
 });
@@ -34,8 +33,10 @@ app.get('/newmessage', function (req, res){
 
 app.post('/newmessage', function (req, res) {
     var data = require('./guestbook.json');
+    var id = data.length + 1;
     data.push({
-        "username": req.body.username, //Only the id and username is not working!
+        "id": id,
+        "username": req.body.username, 
         "country": req.body.country,
         "message": req.body.message,
         "date": new Date()  
@@ -49,7 +50,7 @@ fs.writeFile('guestbook.json', jsonStr, (err) => {
     });
     res.send('saved the data to a file, go to /guestbook to see file');
 });
-//New function
+//Show the ajaxmessage html form
 app.get('/ajaxmessage', function (req, res){
     res.sendFile(__dirname + '/ajaxmessage.html');
 });

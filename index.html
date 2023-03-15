@@ -1,15 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html style="position:absolute; left:150px; top:10px; border-radius:10px;" class="no-border" id="onstock-div">
+    
 <head>
     <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <script src="Workshop.js"></script>
+	<link rel="stylesheet" href="styles.css">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
   <title>Homepage</title>
+  <style>
+	body {background-color: powderblue;}
+	h1   {color: rgb(9, 9, 30);
+		font-family: Arial;}
+	html {color: rgb(9, 9, 30); font-family: Arial;} 
+	input, textarea {background-color: #D3D3D3;}
+	select {background-color: #D3D3D3;}
+	button {background-color: #D3D3D3;}
+	.topnav {
+	overflow: hidden;
+	background-color: powderblue;
+	}
+
+	.topnav a {
+	float: left;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 17px;
+	border: 1px solid black;
+	padding: 8px
+	}
+
+	.topnav a:hover {
+	background-color: #D3D3D3;
+	color: black;
+	}
+
+	.topnav a.active {
+	background-color: #D3D3D3;
+	color: Black;
+	}
+	.col-sm-4 {background-color: powderblue;}
+	div { background-color:#D3D3D3; border: 2px; padding: 10px; border-radius: 25px;}
+</style>
 </head>
 <body>
-    <H1> I lOVE BRUCE WILLIS</H1>
-    <H2> Yippee-Ki-Yay motherfucker!</H2>
+    <div class="topnav">
+        <a class="active" href='/newmessage'>New message</a>
+        <a href='/guestbook'>Guestbook</a>
+        <a href='/ajaxmessage'>AJAX message</a>
+    </div>
+    <H1> My guestbook school project</H1>
+    <H2> *** Please make a greeting on my guestbook *** </H2>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8">
+				<h3>This is my school project for full stack course.</h3>
+				<br>
+				<p>	I hope you can help me fill in the pages by visiting my guestbook and leaving me a message?</p>
+				<p>	Fill in your name and where you are from and maybe you can add some greeting including your favorite song?</p>
+				<p>Do you have any recommendations for me? Or is there something that is popular now in your country?</p>
+				<p> I would be eager to learn about new music, bands and styles. </p>
+				<br>
+				<p>	This below is one of my favorite songs. It is made by Slipknot and sang by Corey Taylor.</p>
+				<br>
+				<p>	Take a listen and enjoy! </p>
+				<br>
+				<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2vPZ4Lklyu75zBR3SgbFNI?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+			</div>
+			<div class="col-sm-4">
+				<h3>A few other songs I love</h3>
+				<li>Hurt by Johnny Cash</li>
+				<li>Welcome home by Coheed and Cambria</li>	
+				<li>Ashes by Pain of salvation</li>
+				<li>Everything dies by Type O Negative</li>
+				<li>No place to hide by Korn</li>
+				<li>Whiskey in the jar by Metallica</li>
+				<li>Weak by Skunk Anansie</li>
+				<li>Digging the grave by Faith no more</li>
+				<li>Replica by Sonata Arctica</li>
+				<li>Cemetery gates by Pantera</li>
+				<li>The beautiful people by Marilyn Manson</li>
+				<li>Children of Bodom by Children of botom </li>
+				<li>Bundy by Animal Alpha</li>
+				<li>Pisces by Jinjer</li>
+				<li>Laugh 'n' a 1/2 by D-A-D</li>
+				<li>Huuda! by Haloo Helsinki</li>
+				<li>Seven nation army by The White Stripes</li>
+				<li>Who cares by by Anouk</li>
+				<li>Do what I say by Clawfinger</li>
+				<li>Run to the water by Live</li>
+				<li>Ironic by alanis Morissette</li>
+				<li>True colors by Cyndi Lauper</li>
+				<li>I think I'm paranoid by Garbage</li>
+				<br>
+				<p> And so much more...</p>
+			</div>
+		</div>	
+	</div>	
 </body>
 </html>

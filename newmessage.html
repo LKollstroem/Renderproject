@@ -1,7 +1,60 @@
-<h1>P1: Guestbook application</h1>
-<form method="post" action="/newmessage">
+<!DOCTYPE html>
+<html style="position:absolute; left:150px; top:10px; border-radius:10px;" class="no-border" id="onstock-div">
+    <style>
+        body {background-color: powderblue;}
+        h1   {color: rgb(9, 9, 30);
+            font-family: Arial;}
+        html {color: rgb(9, 9, 30); font-family: Arial;} 
+        input, textarea {background-color: #D3D3D3;}
+        select {background-color: #D3D3D3;}
+        button {background-color: #D3D3D3;}
+		.topnav {
+		overflow: hidden;
+		background-color: powderblue;
+		}
+
+		.topnav a {
+		float: left;
+		color: black;
+		text-align: center;
+		padding: 14px 16px;
+        border-radius: 5px;
+		text-decoration: none;
+		font-size: 17px;
+		border: 1px solid black;
+		padding: 8px
+		}
+
+		.topnav a:hover {
+		background-color: #D3D3D3;
+		color: black;
+		}
+
+		.topnav a.active {
+		background-color: #D3D3D3;
+		color: Black;
+		}
+    </style>
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>New message</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href='/'>Homepage</a>
+        <a href='/ajaxmessage'>Ajax message</a>
+        <a href='/guestbook'>Guestbook</a>
+
+    </div>
+    <h1>P1: Guestbook application</h1>
+    <form method="post" action="/newmessage">
     Name <input type="text" name="username">
     Country <input type="text" name="country">
     Message <input type="text" name="message">
-    <input type = "submit" value ="submit">
-</form>
+        <input type = "submit" value ="submit">
+    </form>
+</body>
+</html>

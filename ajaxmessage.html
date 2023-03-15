@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html style="position:absolute; left:150px; top:10px; border-radius:10px;" class="no-border" id="onstock-div">
+    <style>
+        body {background-color: powderblue;}
+        h1   {color: rgb(9, 9, 30);
+            font-family: Arial;}
+        html {color: rgb(9, 9, 30); font-family: Arial;} 
+        input, textarea {background-color: #D3D3D3;}
+        select {background-color: #D3D3D3;}
+        button {background-color: #D3D3D3;}
+		.topnav {
+		overflow: hidden;
+		background-color: powderblue;
+		}
+
+		.topnav a {
+		float: left;
+		color: black;
+		text-align: center;
+		padding: 14px 16px;
+        border-radius: 5px;
+		text-decoration: none;
+		font-size: 17px;
+		border: 1px solid black;
+		padding: 8px
+		}
+
+		.topnav a:hover {
+		background-color: #D3D3D3;
+		color: black;
+		}
+
+		.topnav a.active {
+		background-color: #D3D3D3;
+		color: Black;
+		}
+    </style>
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>AJAX message</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href='/'>Homepage</a>
+        <a href='/newmessage'>New message</a>
+        <a href='/guestbook'>Guestbook</a>
+    </div>
+    <h1>AJAX message</h1>
+    <form method="post" action="/ajaxmessage" id="ajaxform">
+        Name <input type="text" name="username" id="username">
+        Country <input type="text" name="country" id="country">
+        Message <input type="text" name="message" id="message">
+		<button onclick="loadTable" id="button" name="button" type="button">Show data</button>
+	</form>
+	<br>
+    <h2>Entered data</h2>
+	<div id="data"></div>
+        <table style="background-color:powderblue" id="table" class="display" cellspacing="0" width="110%"  border="1">
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Name</td>
+					<td>Country</td>
+					<td>Date</td>
+					<td>Message</td>
+				</tr>
+			</thead>
+			<tbody>	
+			</tbody>	
+		</table>
+    </div>  
+	<script>
+	function loadTable(i){	
+		var i = 0;
+		var x;
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				makeTable(this, i);
+			}
+		};
+		xmlhttp.open("GET", document.getElementById("ajaxform").innerHTML, true);
+		xmlhttp.send();
+	}
+
+	function makeTable(xml, i) {
+		var xmlDoc = xml.responseXML; 
+		x = xmlDoc.getElementById("ajaxform");
+		var date = new Date();
+		var id = data.length + 1;
+		var data = document.getElementById("data").innerHTML;
+		results = '<style>table, td {background-color: powderblue; border: 1px solid black;}</style><table id="table" border="1">';
+		for(var i =0; i<data.length; i++){
+			results +=
+			'<tr>'+
+			'<td id="id">' +data[i].id+'</td>'+
+			'<td id="username">' +data[i].username+'</td>'+
+			'<td id="country">' +data[i].country+'</td>'+
+			'<td id="date">' +data[i].date+'</td>'+
+			'<td id="message">' +data[i].message+'</td>'+
+			'</tr>';
+		}
+	}	
+	</script>
+			
+</body>
+</html>
