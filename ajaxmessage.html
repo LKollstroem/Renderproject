@@ -73,6 +73,7 @@
 		</table>
     </div>  
 	<script>
+//This those not work with JSON, and not by pulling data straight from the form, have tryed many many versions		
 	function loadTable(i){	
 		var i = 0;
 		var x;
@@ -82,27 +83,26 @@
 				makeTable(this, i);
 			}
 		};
-		xmlhttp.open("GET", document.getElementById("ajaxform").innerHTML, true);
-		xmlhttp.send();
+		xmlhttp.open("GET", "/ajaxmessage", true);
 	}
-
 	function makeTable(xml, i) {
 		var xmlDoc = xml.responseXML; 
 		x = xmlDoc.getElementById("ajaxform");
 		var date = new Date();
 		var id = data.length + 1;
-		var data = document.getElementById("data").innerHTML;
+		results = document.getElementById("data").innerHTML;
 		results = '<style>table, td {background-color: powderblue; border: 1px solid black;}</style><table id="table" border="1">';
 		for(var i =0; i<data.length; i++){
 			results +=
 			'<tr>'+
-			'<td id="id">' +data[i].id+'</td>'+
-			'<td id="username">' +data[i].username+'</td>'+
-			'<td id="country">' +data[i].country+'</td>'+
-			'<td id="date">' +data[i].date+'</td>'+
-			'<td id="message">' +data[i].message+'</td>'+
+			'<td>' +x[i].id+'</td>'+
+			'<td>' +x[i].username+'</td>'+
+			'<td>' +x[i].country+'</td>'+
+			'<td>' +x[i].date+'</td>'+
+			'<td>' +x[i].message+'</td>'+
 			'</tr>';
 		}
+		xmlhttp.send(results);
 	}	
 	</script>
 			
