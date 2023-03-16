@@ -75,35 +75,38 @@
 	<script>
 //This those not work with JSON, and not by pulling data straight from the form, have tryed many many versions		
 	function loadTable(i){	
+
 		var i = 0;
-		var x;
+		var data = document.getElementById("ajaxform");
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				makeTable(this, i);
+				var username = document.getElementById("username");
+				var country = document.getElementById("country");
+				var message = document.getElementById("message");
+				var date = new Date();
+				var id = data.length + 1;
+				results = document.getElementById("data").innerHTML;
+				results = '<style>table, td {background-color: powderblue; border: 1px solid black;}</style><table id="table" border="1">';
+				for(var i =0; i<data.length; i++){
+					results +=
+					'<tr>'+
+					'<td>' +data[i].id+'</td>'+
+					'<td>' +data[i].username+'</td>'+
+					'<td>' +data[i].country+'</td>'+
+					'<td>' +data[i].date+'</td>'+
+					'<td>' +data[i].message+'</td>'+
+					'</tr>';
+				}
 			}
 		};
-		xmlhttp.open("GET", "/ajaxmessage", true);
-	}
-	function makeTable(xml, i) {
-		var xmlDoc = xml.responseXML; 
-		x = xmlDoc.getElementById("ajaxform");
-		var date = new Date();
-		var id = data.length + 1;
-		results = document.getElementById("data").innerHTML;
-		results = '<style>table, td {background-color: powderblue; border: 1px solid black;}</style><table id="table" border="1">';
-		for(var i =0; i<data.length; i++){
-			results +=
-			'<tr>'+
-			'<td>' +x[i].id+'</td>'+
-			'<td>' +x[i].username+'</td>'+
-			'<td>' +x[i].country+'</td>'+
-			'<td>' +x[i].date+'</td>'+
-			'<td>' +x[i].message+'</td>'+
-			'</tr>';
-		}
+		xmlhttp.open("POST", "/ajaxmessage", true);
 		xmlhttp.send(results);
-	}	
+	}
+	
+		
+		
+
 	</script>
 			
 </body>
