@@ -51,9 +51,9 @@
     <h1>AJAX message</h1>
     <form method="post" action="/ajaxmessage" id="ajaxform">
         Name <input type="text" name="username" id="username">
-        Country <input type="text" name="country" id="country">
+        Country <input type="text" name="country" id="country">	
         Message <input type="text" name="message" id="message">
-		<button onclick="loadTable()" id="button" name="button" type="button">Show data</button>
+		<button id="button" name="button" type="button">Show data</button>
 	</form>
 	<br>
     <h2>Entered data</h2>
@@ -75,30 +75,45 @@
 	<script>
 
 //not working with AJAX, so had to find another way to make the table.
-	var clicks = 0;
-	function loadTable(){
-		var date = new Date();
-		clicks += 1;
-		var id = clicks;
-		var results = document.getElementById("data");
-		var row = document.createElement('tr');
-		var column1 = document.createElement('td');
-		var column2 = document.createElement('td');
-		var column3 = document.createElement('td');
-		var column4 = document.createElement('td');
-		var column5 = document.createElement('td');
-		column1.innerHTML = id;
-		column2.innerHTML = document.getElementById('username').value;
-		column3.innerHTML = document.getElementById('country').value;
-		column4.innerHTML = date;
-		column5.innerHTML = document.getElementById('message').value;
-		row.appendChild(column1);
-		row.appendChild(column2);
-		row.appendChild(column3);
-		row.appendChild(column4);
-		row.appendChild(column5);
-		table.children[0].appendChild(row);
-	}	
+var clicks = 0;
+	window.onload = (event) =>{
+		var startButton = document.getElementById("button");
+		startButton.addEventListener("click", function(){
+			clicks += 1;
+			var id = clicks;
+			var date = new Date();
+			var results = document.getElementById("data").innerHTML;
+			var row = document.createElement('tr');
+			var column1 = document.createElement('td');
+			var column2 = document.createElement('td');
+			var column3 = document.createElement('td');
+			var column4 = document.createElement('td');
+			var column5 = document.createElement('td');
+			column1.innerHTML = id;
+			column2.innerHTML = document.getElementById('username').value;
+			column3.innerHTML = document.getElementById('country').value;
+			column4.innerHTML = date;
+			column5.innerHTML = document.getElementById('message').value;
+			row.appendChild(column1);
+			row.appendChild(column2);
+			row.appendChild(column3);
+			row.appendChild(column4);
+			row.appendChild(column5);
+			table.children[0].appendChild(row);
+			console.log(results);
+
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("data").innerHTML = this.responseText;
+					console.log(this.responseText);
+			};
+		};
+		xmlhttp.open("POST", "/ajaxmessage", true);
+		xmlhttp.send(results);
+	})
+}
+	
 
 	</script>
 			
