@@ -74,14 +74,16 @@
     </div>  
 	<script>
 
-//not working with AJAX, so had to find another way to make the table.
+//Ajax table with button event
 var clicks = 0;
 	window.onload = (event) =>{
 		var startButton = document.getElementById("button");
 		startButton.addEventListener("click", function(){
+//make sure no empty fields, alert if empty			
 			if(document.getElementById('username').value == "" || document.getElementById('country').value == "" || document.getElementById('message').value ==""){
 				alert("Please fill in all fields!");
 			}else{
+//create table				
 				clicks += 1;
 				var id = clicks;
 				var date = new Date();
@@ -105,6 +107,7 @@ var clicks = 0;
 				table.children[0].appendChild(row);
 				console.log(results);
 			}	
+//Ajax call			
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
