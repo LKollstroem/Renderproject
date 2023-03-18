@@ -79,29 +79,32 @@ var clicks = 0;
 	window.onload = (event) =>{
 		var startButton = document.getElementById("button");
 		startButton.addEventListener("click", function(){
-			clicks += 1;
-			var id = clicks;
-			var date = new Date();
-			var results = document.getElementById("data").innerHTML;
-			var row = document.createElement('tr');
-			var column1 = document.createElement('td');
-			var column2 = document.createElement('td');
-			var column3 = document.createElement('td');
-			var column4 = document.createElement('td');
-			var column5 = document.createElement('td');
-			column1.innerHTML = id;
-			column2.innerHTML = document.getElementById('username').value;
-			column3.innerHTML = document.getElementById('country').value;
-			column4.innerHTML = date;
-			column5.innerHTML = document.getElementById('message').value;
-			row.appendChild(column1);
-			row.appendChild(column2);
-			row.appendChild(column3);
-			row.appendChild(column4);
-			row.appendChild(column5);
-			table.children[0].appendChild(row);
-			console.log(results);
-
+			if(document.getElementById('username').value == "" || document.getElementById('country').value == "" || document.getElementById('message').value ==""){
+				alert("Please fill in all fields!");
+			}else{
+				clicks += 1;
+				var id = clicks;
+				var date = new Date();
+				var results = document.getElementById("data").innerHTML;
+				var row = document.createElement('tr');
+				var column1 = document.createElement('td');
+				var column2 = document.createElement('td');
+				var column3 = document.createElement('td');
+				var column4 = document.createElement('td');
+				var column5 = document.createElement('td');
+				column1.innerHTML = id;
+				column2.innerHTML = document.getElementById('username').value;
+				column3.innerHTML = document.getElementById('country').value;
+				column4.innerHTML = date;
+				column5.innerHTML = document.getElementById('message').value;
+				row.appendChild(column1);
+				row.appendChild(column2);
+				row.appendChild(column3);
+				row.appendChild(column4);
+				row.appendChild(column5);
+				table.children[0].appendChild(row);
+				console.log(results);
+			}	
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {

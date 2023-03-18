@@ -30,26 +30,39 @@ app.get('/guestbook', function (req, res){
 app.get('/newmessage', function (req, res){
     res.sendFile(__dirname + '/newmessage.html');
 });
-
+//choose where to post
 app.post('/newmessage', function (req, res) {
     var data = require('./guestbook.json');
     var id = data.length + 1;
+    var username = req.body.username;
+    var country = req.body.country;
+    var message = req.body.message;
+//but first check if empty fields
+    if(username === "" || country === "" || message === ""){
+        res.send('Please fill in all fields!');
+    }else{
+
+//data to push to table        
     data.push({
         "id": id,
         "username": req.body.username, 
         "country": req.body.country,
         "message": req.body.message,
         "date": new Date()  
-    });
+        
+    });    
+    
 //convert to string format
     var jsonStr = JSON.stringify(data);
 //write data to a file
-fs.writeFile('guestbook.json', jsonStr, (err) => {
-    if (err) throw err;
-    console.log('It\'s saved!');
-    });
-    res.send('saved the data to a file, go to /guestbook to see file');
+    fs.writeFile('guestbook.json', jsonStr, (err) => {
+        if (err) throw err;
+        console.log('It\'s saved!');
+            });
+            res.send('saved the data to a file, go to /guestbook to see file');
+        }       
 });
+        
 //Show the ajaxmessage html form
 app.get('/ajaxmessage', function (req, res){
     res.sendFile(__dirname + '/ajaxmessage.html');
